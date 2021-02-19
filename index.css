@@ -61,6 +61,10 @@
 		
 	/* display */
 		
+		html{
+			scroll-behavior			: smooth;
+		}
+		
 		.whole__page{
 			width					: 100%;
 			margin					: 0 auto;
