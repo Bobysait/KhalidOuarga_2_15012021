@@ -461,11 +461,12 @@
 		}
 		
 		.populars .card--image--box{
-			height					: 134px;
+			height					: auto;
 			padding					: 5px 5% 5px 5px;
 		}
 		.populars .card--image{
 			border-radius			: 15px 0 0 15px;
+			height					: 134px;
 		}
 		
 		
@@ -478,9 +479,10 @@
 		.cities .card--image--box{
 			padding					: 5px 5px 0 5px;
 			width					: auto;
-			height					: 134px;
+			height					: auto;
 		}
 		.cities .card--image{
+			height					: 134px;
 			border-radius			: 15px 15px 0 0;
 		}
 		
