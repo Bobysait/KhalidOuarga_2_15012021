@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="fr-FR">
+	
+	
+	<!--
+		xs -> phones w<768px
+		sm -> tablets w>=768px
+		md -> small laptops w>=992px
+		lg -> laptops and desktops w>=1200px
+	-->
+	
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		<meta name="description" content="Reservia, réservation d'hébergement en ligne">
+		
+		<title>Reservia</title>
+		
+	<!--	<link rel="shortcut icon" type="image/x-icon" href="favicon.png"> -->
+		<link rel="stylesheet" href="media/all.css" />
+		<link rel="stylesheet" href="index.css" />
+		
+	<!--	<script src="https://kit.fontawesome.com/d69a5836e5.js" crossorigin="anonymous"></script> -->
+		
+		<script>
+			
+			
+			// add a filter to the filters' list
+			function addFilter(pId, pName, pIcon){
+				var d=document.getElementById(pId);
+				d.innerHTML += ["<label class=\"filter\">",
+								"	<input type=\"checkbox\" class=\"filter--checkbox\" />",
+								"	<span class=\"filter--icon fa fa-"+pIcon+"\"></span>",
+								"	<span class=\"filter--name\">"+pName+"</span>",
+								"</label>"].join('\n');
+				// console.log(d.innerHTML);
+			}
+			
+			// generate a card on the 'popupars' or 'city' sections
+			function addCard(pId,pUrl,pTitle,pPrice,pRate){
+				var d=document.getElementById(pId);
+				d.innerHTML += [
+								"<div class=\"card box\">",
+								"	<div class=\"card--image--box\">",
+								"		<img src=\"./media/hosts/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
+								"	</div>",
+								"	<div class=\"card--desc\">",
+								"		<h4 class=\"card--title\">"+pTitle+"</h4>",
+								"		<p class=\"card--price\">Nuit à partir de "+pPrice+"€</p>",
+								"		<div class=\"fa card--ratings\">",
+								"			<span class=\"rating--up rating--"+pRate+"\"></span>"+(pRate<5?"<span class=\"rating--down rating--"+(5-pRate)+"\"></span>":""),
+								"		</div>",
+								"	</div>",
+								"</div>"
+							].join("\n");
+				// console.log(d.innerHTML);
+			}
+			
+			function addActivity(pId,pUrl,pTitle,pExpand,pIdCard){
+				var d=document.getElementById(pId);
+				d.innerHTML += [
+								"<div class=\"card box "+pExpand+"\" id=\""+pIdCard+"\">",
+								"	<div class=\"card--image--box\">",
+								"		<img src=\"./media/activities/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
+								"	</div>",
+								"	<h4 class=\"card--title\">"+pTitle+"</h4>",
+								"</div>"
+							].join("\n");
+				// console.log(d.innerHTML);
+			}
+			
+			// if we click on "show more"
+			function doNothing(){
+				console.log("Wanna see more ? PAY ... More !");
+			}
+		</script>
+	</head>
+	
+	<!-- The body block -->
+	<body class="theme--lighter">
+		
+		<!-- The whole page maxed-width to 1024px -->
+		<div class="whole__page">
+		
+			<!-- ********************************************************
+										HEADER
+			********************************************************* -->
+				
+				<header class="theme--lighter">
+					
+					<!-- Logo Insert -->
+					<img
+						src		=	"./media/reservia.svg"
+						alt		=	"logo reservia"
+						height	=	"45px"
+						width	=	"auto"
+						class	=	"header--logo"
+					/>
+					
+					<!-- Subscribe -->
+					<a href="#" class="header--subscribe">S'inscrire</a>
+					
+					<!-- Navigation Bar -->
+					<nav>
+						<a href="#anchor_s1" class="nav--item">Hébergements</a>
+						<a href="#anchor_s2" class="nav--item">Activités</a>
+					</nav>
+					
+				</header>
+				
+				
+			<!-- ********************************************************
+										MAIN
+			********************************************************* -->
+				
+				<main>
+					
+					<!-- SEARCH BOX -->
+						
+						<section class="search theme--lighter">
+							
+							<h1>Trouvez votre hébergement pour des vacances de rêve</h1>
+							<p>En plein centre ville ou en pleine nature</p>
+							
+							<div class="box">
+								<div class="searchbar">
+									<form class="searchbar--form" action="#" method="POST">
+										<div class="searchbar--location"><i class="searchbar--icon fas fa-map-marker-alt"></i></div>
+										<input type="text" class="geolocalitation searchbar--text" name="" placeholder="Marseille, France" />
+										<button class="searchbar--button"><i class="fas fa-search"></i><span class="searchbar--button--name"> Rechercher </span></button>
+									</form>
+								</div>
+							</div>
+							
+						</section>
+						
+					<!-- FILTERS -->
+						
+						<section class="filters theme--lighter">
+							
+							<h2>Filtres</h2>
+							
+							<div class="box" id="hosts-filters">
+								<!-- label can contain one control element
+									so we use it to wrap a checkbox that won't actually be displayed
+								-->
+							</div>
+							<p class="filters--info"><i class="fas fa-info" title="disponibilité"></i> Plus de 500 logements sont disponibles dans cette ville.</p>
+							
+						</section>
+						
+					<!-- HOSTS -->
+						
+						<section class="hosts">
+							<h1 class="hosts--hidden">HOSTS</h1>
+							
+							<!-- MOST POPULARS -->
+							<aside class="populars theme--light">
+								
+								<div class="populars--title">
+									<h1>Les plus populaires</h1>
+									<i class="fas fa-chart-line"></i>
+								</div>
+								
+								<div class="box card--box" id="id__city-populars"> <!-- [addCards here] --> </div>
+									
+									<!-- Template :
+									<div class="card">
+										<div class="card--image--box">
+											<img src="./media/hosts/[pUrl]" alt="" class="card--image"/>
+										</div>
+										<div class="card--desc">
+											<h4 class="card--title">[pTitle]</h4>
+											<p class="card--price">Nuit à partir de [pPrice]€</p>
+											<div class="fa card--ratings">
+												<span class="rating--up rating--[pRate]"></span> [ if (pRate<5) : <span class="rating--down rating--[5-pRate]"></span> ]
+											</div>
+										</div>
+									</div>
+									-->
+								
+							</aside>
+							
+							<!-- LOCAL HOSTS -->
+							
+							<article class="cities theme--lighter" id="anchor_s1">
+								
+								<h1>Hébergements à Marseille</h1>
+								
+								<div class="box card--box" id="id__city-hosts"> <!-- [addCards here] --> </div>
+								
+								<button class="hosts--showmore" onclick="doNothing()">Afficher plus</button>
+								
+							</article>
+							
+							
+						</section>
+						
+					<!-- ACTIVITIES -->
+					
+					<section class="activities theme--lighter" id="anchor_s2">
+						
+						<h1>Activités à Marseille</h1>
+						
+						<div class="box card--box" id="id__activities"> <!--addActivities here --> </div>
+						
+						
+					</section>
+					
+				</main>
+				
+				
+				
+			<!-- ********************************************************
+										FOOTER
+			********************************************************* -->
+				
+				<footer class="theme--light">
+					
+					<div class="footer--box">
+						
+						<div>
+							<h3>A propos</h3>
+							<ul class="footer--list">
+								<li>Fonctionnement du site</li>
+								<li>Conditions générales de vente</li>
+								<li>Données et confidentialité</li>
+							</ul>
+						</div>
+						
+						<div>
+							<h3>Nos hébergements</h3>
+							<ul class="footer--list">
+								<li>Charte qualité</li>
+								<li>Soumettre votre hôtel</li>
+							</ul>
+						</div>
+						
+						<div>
+							<h3>Assistance</h3>
+							<ul class="footer--list">
+								<li>Centre d'aide</li>
+								<li>Nous contacter</li>
+							</ul>
+						</div>
+						
+					</div>
+					
+				</footer>
+				
+				
+				
+			<!-- ********************************************************
+										FILL AUTO CARDS
+			********************************************************* -->
+				<script>
+					addFilter("hosts-filters", "Économique", "money-bill-wave");
+					addFilter("hosts-filters", "Familial", "child");
+					addFilter("hosts-filters", "Romantique", "heart");
+					addFilter("hosts-filters", "Animaux Autorisés", "dog");
+					
+					addCard("id__city-populars","hotel_le_soleil_du_matin.jpg","Hôtel Le soleil du matin","128", 5);
+					addCard("id__city-populars","au_coeur_de_l_eau_chambres_d_hotes.jpg","Au coeur de l'eau Chambres d'hôtes", "71", 4);
+					addCard("id__city-populars","hotel_tout_bleu_et_blanc.jpg","Hôtel Tout bleu et Blanc", "68", 4);
+					
+					addCard("id__city-hosts","auberge_la_cannebiere.jpg","Auberge la Cannebière","25", 4);
+					addCard("id__city-hosts","hotel_du_port.jpg","Hôtel du port", "52", 5);
+					addCard("id__city-hosts","hotel_les_mouettes.jpg","Hôtel Les mouettes", "76", 4);
+					addCard("id__city-hosts","hotel_de_la_mer.jpg","Hôtel de la mer","46", 3);
+					addCard("id__city-hosts","auberge_le_panier.jpg","Auberge Le Panier", "23", 4);
+					addCard("id__city-hosts","hotel_chez_amina.jpg","Hôtel chez Amina", "96", 5);
+					
+					addActivity("id__activities","vieux_port.jpg","Vieux Port","card5", "id__card_1");
+					addActivity("id__activities","fort_de_pomegues.jpg","Fort de Pomègues","card2", "id__card_2");
+					addActivity("id__activities","iles_du_frioul.jpg","Îles du Frioul","card3", "id__card_3");
+					addActivity("id__activities","parc_national_des_calanques.jpg","Parc National des Calanques","card5", "id__card_4");
+					addActivity("id__activities","notre_dame_de_la_garde.jpg","Notre-Dame-de-la-Garde","card3", "id__card_5");
+					addActivity("id__activities","parc_longchamp.jpg","Parc Longchamp","card2", "id__card_6");
+				</script>
+
+		</div>
+		
+	</body>
+	
+</html>
