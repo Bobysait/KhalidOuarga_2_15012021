@@ -36,13 +36,21 @@
 				// console.log(d.innerHTML);
 			}
 			
+			function mipmapImage(pImgDir, pImgName, pImgAlt="", pClass=""){
+				return ["<img src=\""+pImgDir+"/2_large/"+pImgName+"\" srcset=\"",
+    	                    pImgDir+"/1_xlarge/"+pImgName+" 2560w, ",
+        	                pImgDir+"/3_medium/"+pImgName+" 768w, ",
+            	            pImgDir+"/4_small"+pImgName+" 420w\" ",
+                	    " alt=\""+pImgAlt+"\""+(pClass!=""?"class=\""+pClass+"\"" : "")+" />"].join('\n');
+			}
+			
 			// generate a card on the 'popupars' or 'city' sections
 			function addCard(pId,pUrl,pTitle,pPrice,pRate){
 				var d=document.getElementById(pId);
 				d.innerHTML += [
 								"<div class=\"card box\">",
 								"	<div class=\"card--image--box\">",
-								"		<img src=\"./media/hosts/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
+								"		"+mipmapImage("./media/hosts",pUrl,pTitle, "card--image"), // <img src=\"./media/hosts/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
 								"	</div>",
 								"	<div class=\"card--desc\">",
 								"		<h4 class=\"card--title\">"+pTitle+"</h4>",
@@ -55,13 +63,14 @@
 							].join("\n");
 				// console.log(d.innerHTML);
 			}
-			
+                    
 			function addActivity(pId,pUrl,pTitle,pExpand,pIdCard){
 				var d=document.getElementById(pId);
 				d.innerHTML += [
 								"<div class=\"card box "+pExpand+"\" id=\""+pIdCard+"\">",
 								"	<div class=\"card--image--box\">",
-								"		<img src=\"./media/activities/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
+								"		"+mipmapImage("./media/activities",pUrl,pTitle, "card--image"),
+								//"		<img src=\"./media/activities/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
 								"	</div>",
 								"	<h4 class=\"card--title\">"+pTitle+"</h4>",
 								"</div>"
@@ -254,23 +263,23 @@
 					addFilter("hosts-filters", "Romantique", "heart");
 					addFilter("hosts-filters", "Animaux Autorisés", "dog");
 					
-					addCard("id__city-populars","hotel_le_soleil_du_matin.jpg","Hôtel Le soleil du matin","128", 5);
-					addCard("id__city-populars","au_coeur_de_l_eau_chambres_d_hotes.jpg","Au coeur de l'eau Chambres d'hôtes", "71", 4);
-					addCard("id__city-populars","hotel_tout_bleu_et_blanc.jpg","Hôtel Tout bleu et Blanc", "68", 4);
+					addCard("id__city-populars","emile-guillemot-Bj_rcSC5XfE-unsplash.jpg","Hôtel Le soleil du matin","128", 5);
+					addCard("id__city-populars","aw-creative-VGs8z60yT2c-unsplash.jpg","Au coeur de l'eau Chambres d'hôtes", "71", 4);
+					addCard("id__city-populars","febrian-zakaria-sjvU0THccQA-unsplash.jpg","Hôtel Tout bleu et Blanc", "68", 4);
 					
-					addCard("id__city-hosts","auberge_la_cannebiere.jpg","Auberge la Cannebière","25", 4);
-					addCard("id__city-hosts","hotel_du_port.jpg","Hôtel du port", "52", 5);
-					addCard("id__city-hosts","hotel_les_mouettes.jpg","Hôtel Les mouettes", "76", 4);
-					addCard("id__city-hosts","hotel_de_la_mer.jpg","Hôtel de la mer","46", 3);
-					addCard("id__city-hosts","auberge_le_panier.jpg","Auberge Le Panier", "23", 4);
-					addCard("id__city-hosts","hotel_chez_amina.jpg","Hôtel chez Amina", "96", 5);
+					addCard("id__city-hosts","marcus-loke-WQJvWU_HZFo-unsplash.jpg","Auberge la Cannebière","25", 4);
+					addCard("id__city-hosts","fred-kleber-gTbaxaVLvsg-unsplash.jpg","Hôtel du port", "52", 5);
+					addCard("id__city-hosts","reisetopia-B8WIgxA_PFU-unsplash.jpg","Hôtel Les mouettes", "76", 4);
+					addCard("id__city-hosts","annie-spratt-Eg1qcIitAuA-unsplash.jpg","Hôtel de la mer","46", 3);
+					addCard("id__city-hosts","nicate-lee-kT-ZyaiwBe0-unsplash.jpg","Auberge Le Panier", "23", 4);
+					addCard("id__city-hosts","febrian-zakaria-M6S1WvfW68A-unsplash.jpg","Hôtel chez Amina", "96", 5);
 					
-					addActivity("id__activities","vieux_port.jpg","Vieux Port","card5", "id__card_1");
-					addActivity("id__activities","fort_de_pomegues.jpg","Fort de Pomègues","card2", "id__card_2");
-					addActivity("id__activities","iles_du_frioul.jpg","Îles du Frioul","card3", "id__card_3");
-					addActivity("id__activities","parc_national_des_calanques.jpg","Parc National des Calanques","card5", "id__card_4");
-					addActivity("id__activities","notre_dame_de_la_garde.jpg","Notre-Dame-de-la-Garde","card3", "id__card_5");
-					addActivity("id__activities","parc_longchamp.jpg","Parc Longchamp","card2", "id__card_6");
+					addActivity("id__activities","reno-laithienne-QUgJhdY5Fyk-unsplash.jpg","Vieux Port","card5", "id__card_1");
+					addActivity("id__activities","paul-hermann-QFTrLdQIRhI-unsplash.jpg","Fort de Pomègues","card2", "id__card_2");
+					addActivity("id__activities","kevin-hikari-rV_Qd1l-VXg-unsplash.jpg","Îles du Frioul","card3", "id__card_3");
+					addActivity("id__activities","kilyan-sockalingum-NR8-cBCN3aI-unsplash.jpg","Parc National des Calanques","card5", "id__card_4");
+					addActivity("id__activities","florian-wehde-xW9e8gdotxI-unsplash.jpg","Notre-Dame-de-la-Garde","card3", "id__card_5");
+					addActivity("id__activities","lena-paulin-wH2-EJoDcV0-unsplash.jpg","Parc Longchamp","card2", "id__card_6");
 				</script>
 
 		</div>
