@@ -37,9 +37,9 @@
 			}
 			
 			function mipmapImage(pImgDir, pImgName, pImgAlt="", pClass=""){
-				return ["<img src=\""+pImgDir+"/2_large/"+pImgName+"\" srcset=\"",
+				return ["<img src=\""+pImgDir+"/3_medium/"+pImgName+"\" srcset=\"",
     	                    pImgDir+"/1_xlarge/"+pImgName+" 2560w, ",
-        	                pImgDir+"/3_medium/"+pImgName+" 768w, ",
+        	                pImgDir+"/2_large/"+pImgName+" 1200w, ",
             	            pImgDir+"/4_small"+pImgName+" 420w\" ",
                 	    " alt=\""+pImgAlt+"\""+(pClass!=""?"class=\""+pClass+"\"" : "")+" />"].join('\n');
 			}
@@ -172,7 +172,11 @@
 									<!-- Template :
 									<div class="card">
 										<div class="card-image-box">
-											<img src="./media/hosts/[pUrl]" alt="" class="card-image"/>
+											<img srcset="./media/hosts/3_medium/[pUrl]",
+														"./media/hosts/1_xlarge/[pUrl] 2560w",
+														"./media/hosts/2_large/[pUrl] 1200w",
+														"./media/hosts/4_small/[pUrl] 420w"
+											 alt="" class="card-image"/>
 										</div>
 										<div class="card-desc">
 											<h4 class="card-title">[pTitle]</h4>
