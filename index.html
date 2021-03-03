@@ -2,95 +2,28 @@
 
 <html lang="fr-FR">
 	
-	
-	<!--
-		xs -> phones w<768px
-		sm -> tablets w>=768px
-		md -> small laptops w>=992px
-		lg -> laptops and desktops w>=1200px
-	-->
-	
 	<head>
+		
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		
 		<meta name="description" content="Reservia, réservation d'hébergement en ligne">
 		
 		<title>Reservia</title>
-		<link rel="stylesheet" href="media/all.css" />
-		<link rel="stylesheet" href="index.css" />
 		
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-				
-		<script>
-			
-			
-			// add a filter to the filters' list
-			function addFilter(pId, pName, pIcon){
-				var d=document.getElementById(pId);
-				d.innerHTML += ["<label class=\"filter\">",
-								"	<input type=\"checkbox\" class=\"filter--checkbox\" />",
-								"	<span class=\"filter--icon fa fa-"+pIcon+"\"></span>",
-								"	<span class=\"filter--name\">"+pName+"</span>",
-								"</label>"].join('\n');
-				// console.log(d.innerHTML);
-			}
-			
-			function mipmapImage(pImgDir, pImgName, pImgAlt="", pClass=""){
-				return ["<img src=\""+pImgDir+"/3_medium/"+pImgName+"\" srcset=\"",
-    	                    pImgDir+"/1_xlarge/"+pImgName+" 2560w, ",
-        	                pImgDir+"/2_large/"+pImgName+" 1200w, ",
-            	            pImgDir+"/4_small"+pImgName+" 420w\" ",
-                	    " alt=\""+pImgAlt+"\""+(pClass!=""?"class=\""+pClass+"\"" : "")+" />"].join('\n');
-			}
-			
-			// generate a card on the 'popupars' or 'city' sections
-			function addCard(pId,pUrl,pTitle,pPrice,pRate){
-				var d=document.getElementById(pId);
-				d.innerHTML += [
-								"<div class=\"card box\">",
-								"	<div class=\"card--image--box\">",
-								"		"+mipmapImage("./media/hosts",pUrl,pTitle, "card--image"), // <img src=\"./media/hosts/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
-								"	</div>",
-								"	<div class=\"card--desc\">",
-								"		<h4 class=\"card--title\">"+pTitle+"</h4>",
-								"		<p class=\"card--price\">Nuit à partir de "+pPrice+"€</p>",
-								"		<div class=\"fa card--ratings\">",
-								"			<span class=\"rating--up rating--"+pRate+"\"></span>"+(pRate<5?"<span class=\"rating--down rating--"+(5-pRate)+"\"></span>":""),
-								"		</div>",
-								"	</div>",
-								"</div>"
-							].join("\n");
-				// console.log(d.innerHTML);
-			}
-                    
-			function addActivity(pId,pUrl,pTitle,pExpand,pIdCard){
-				var d=document.getElementById(pId);
-				d.innerHTML += [
-								"<div class=\"card box "+pExpand+"\" id=\""+pIdCard+"\">",
-								"	<div class=\"card--image--box\">",
-								"		"+mipmapImage("./media/activities",pUrl,pTitle, "card--image"),
-								//"		<img src=\"./media/activities/small/"+pUrl+"\" alt=\"\" class=\"card--image\"/>",
-								"	</div>",
-								"	<h4 class=\"card--title\">"+pTitle+"</h4>",
-								"</div>"
-							].join("\n");
-				// console.log(d.innerHTML);
-			}
-			
-			// if we click on "show more"
-			function doNothing(){
-				console.log("Wanna see more ? PAY ... More !");
-			}
-		</script>
+        <script src="https://kit.fontawesome.com/dc80972f73.js" crossorigin="anonymous"></script>
+        
+		<link rel="stylesheet" href="index.css" />
+		
 	</head>
+	
 	
 	<!-- The body block -->
 	<body class="theme--lighter">
 		
 		<!-- The whole page maxed-width to 1024px -->
 		<div class="whole__page">
-		
+			
 			<!-- ********************************************************
 										HEADER
 			********************************************************* -->
@@ -102,11 +35,11 @@
 						src		=	"./media/reservia.svg"
 						alt		=	"logo reservia"
 						height	=	"45"
-						class	=	"header--logo"
+						class	=	"header__logo"
 					/>
 					
 					<!-- Subscribe -->
-					<a href="#" class="header--subscribe">S'inscrire</a>
+					<a href="#" class="header__subscribe">S'inscrire</a>
 					
 					<!-- Navigation Bar -->
 					<nav>
@@ -132,10 +65,10 @@
 							
 							<div class="box">
 								<div class="searchbar">
-									<form class="searchbar--form" action="#" method="POST">
-										<div class="searchbar--location"><i class="searchbar--icon fas fa-map-marker-alt"></i></div>
-										<input type="text" class="geolocalitation searchbar--text" name="search_host" placeholder="Marseille, France" />
-										<button class="searchbar--button"><i class="fas fa-search"></i><span class="searchbar--button--name"> Rechercher </span></button>
+									<form class="searchbar__form" action="#" method="POST">
+										<div class="searchbar__location"><i class="searchbar__icon fas fa-map-marker-alt"></i></div>
+										<input type="text" class="geolocalitation searchbar__text" name="search_host" placeholder="Marseille, France" />
+										<button class="searchbar__button"><i class="fas fa-search"></i><span class="searchbar__button__name"> Rechercher </span></button>
 									</form>
 								</div>
 							</div>
@@ -148,12 +81,35 @@
 							
 							<h2>Filtres</h2>
 							
-							<div class="box" id="hosts-filters">
+							<div class="box">
 								<!-- label can contain one control element
 									so we use it to wrap a checkbox that won't actually be displayed
 								-->
+								<label class="filter">
+									<input type="checkbox" class="filter__checkbox">
+									<span class="filter__icon fa fa-money-bill-wave"></span>
+									<span class="filter__name">Économique</span>
+								</label>
+								
+								<label class="filter">
+									<input type="checkbox" class="filter__checkbox">
+									<span class="filter__icon fa fa-child"></span>
+									<span class="filter__name">Familial</span>
+								</label>
+								
+								<label class="filter">
+									<input type="checkbox" class="filter__checkbox">
+									<span class="filter__icon fa fa-heart"></span>
+									<span class="filter__name">Romantique</span>
+								</label>
+								
+								<label class="filter">
+									<input type="checkbox" class="filter__checkbox">
+									<span class="filter__icon fa fa-dog"></span>
+									<span class="filter__name">Animaux Autorisés</span>
+								</label>
 							</div>
-							<p class="filters--info"><i class="fas fa-info" title="disponibilité"></i> Plus de 500 logements sont disponibles dans cette ville.</p>
+							<p class="filters__info"><i class="fas fa-info" title="disponibilité"></i> Plus de 500 logements sont disponibles dans cette ville.</p>
 							
 						</section>
 						
@@ -167,26 +123,48 @@
 								<h1>Les plus populaires</h1>
 								<i class="fas fa-chart-line"></i>
 								
-								<div class="box card--box" id="id__city-populars"> <!-- [addCards here] --> </div>
+								<div class="box card__box">
 									
-									<!-- Template :
-									<div class="card">
-										<div class="card-image-box">
-											<img srcset="./media/hosts/3_medium/[pUrl]",
-														"./media/hosts/1_xlarge/[pUrl] 2560w",
-														"./media/hosts/2_large/[pUrl] 1200w",
-														"./media/hosts/4_small/[pUrl] 420w"
-											 alt="" class="card-image"/>
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_soleil.jpg" alt="" class="card__image">
 										</div>
-										<div class="card-desc">
-											<h4 class="card-title">[pTitle]</h4>
-											<p class="card-price">Nuit à partir de [pPrice]€</p>
-											<div class="fa card-ratings">
-												<span class="rating-up rating-[pRate]"></span> [ if (pRate<5) : <span class="rating-down rating-[5-pRate]"></span> ]
+										<div class="card__desc">
+											<h4 class="card__title">Hôtel Le soleil du matin</h4>
+											<p class="card__price">Nuit à partir de 128€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--5"></span>
 											</div>
 										</div>
 									</div>
-									-->
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_coeur.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Au coeur de l'eau Chambres d'hôtes</h4>
+											<p class="card__price">Nuit à partir de 71€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--4"></span><span class="rating--down rating--1"></span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_bleu.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Hôtel Tout bleu et Blanc</h4>
+											<p class="card__price">Nuit à partir de 68€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--4"></span><span class="rating--down rating--1"></span>
+											</div>
+										</div>
+									</div>
+									
+								</div>
 								
 							</aside>
 							
@@ -196,9 +174,89 @@
 								
 								<h1>Hébergements à Marseille</h1>
 								
-								<div class="box card--box" id="id__city-hosts"> <!-- [addCards here] --> </div>
+								<div class="box card__box">
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/auberge_cannebiere.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Auberge la Cannebière</h4>
+											<p class="card__price">Nuit à partir de 25€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--4"></span><span class="rating--down rating--1"></span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_port.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Hôtel du port</h4>
+											<p class="card__price">Nuit à partir de 52€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--5"></span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_mouettes.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Hôtel Les mouettes</h4>
+											<p class="card__price">Nuit à partir de 76€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--4"></span><span class="rating--down rating--1"></span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_mer.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Hôtel de la mer</h4>
+											<p class="card__price">Nuit à partir de 46€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--3"></span><span class="rating--down rating--2"></span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/auberge_panier.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Auberge Le Panier</h4>
+											<p class="card__price">Nuit à partir de 23€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--4"></span><span class="rating--down rating--1"></span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="card box">
+										<div class="card__image__box">
+											<img src="./media/hosts/hotel_amina.jpg" alt="" class="card__image">
+										</div>
+										<div class="card__desc">
+											<h4 class="card__title">Hôtel chez Amina</h4>
+											<p class="card__price">Nuit à partir de 96€</p>
+											<div class="fa card__ratings">
+												<span class="rating--up rating--5"></span>
+											</div>
+										</div>
+									</div>
+									
+								</div>
 								
-								<button class="hosts--showmore" onclick="doNothing()">Afficher plus</button>
+								<button class="hosts__showmore" onclick="">Afficher plus</button>
 								
 							</article>
 							
@@ -210,7 +268,44 @@
 						
 						<h1>Activités à Marseille</h1>
 						
-						<div class="box card--box" id="id__activities"> <!--addActivities here --> </div>
+						<div class="box card__box" id="id__activities">
+							<div class="card box card5" id="id__card_1">
+								<div class="card__image__box">
+									<img src="./media/activities/vieux_port.jpg" alt="" class="card__image">
+								</div>
+								<h4 class="card__title">Vieux Port</h4>
+							</div>
+							<div class="card box card2" id="id__card_2">
+								<div class="card__image__box">
+									<img src="./media/activities/fort_pomegues.jpg" alt="" class="card__image">
+								</div>
+								<h4 class="card__title">Fort de Pomègues</h4>
+							</div>
+							<div class="card box card3" id="id__card_3">
+								<div class="card__image__box">
+									<img src="./media/activities/iles_frioul.jpg" alt="" class="card__image">
+								</div>
+								<h4 class="card__title">Îles du Frioul</h4>
+							</div>
+							<div class="card box card5" id="id__card_4">
+								<div class="card__image__box">
+									<img src="./media/activities/calanques.jpg" alt="" class="card__image">
+								</div>
+								<h4 class="card__title">Parc National des Calanques</h4>
+							</div>
+							<div class="card box card3" id="id__card_5">
+								<div class="card__image__box">
+									<img src="./media/activities/notre_dame_garde.jpg" alt="" class="card__image">
+								</div>
+								<h4 class="card__title">Notre-Dame-de-la-Garde</h4>
+							</div>
+							<div class="card box card2" id="id__card_6">
+								<div class="card__image__box">
+									<img src="./media/activities/longchamp.jpg" alt="" class="card__image">
+								</div>
+								<h4 class="card__title">Parc Longchamp</h4>
+							</div>
+						</div>
 						
 						
 					</section>
@@ -225,11 +320,11 @@
 				
 				<footer class="theme--light">
 					
-					<div class="footer--box">
+					<div class="footer">
 						
 						<div>
 							<h3>A propos</h3>
-							<ul class="footer--list">
+							<ul class="footer__list">
 								<li>Fonctionnement du site</li>
 								<li>Conditions générales de vente</li>
 								<li>Données et confidentialité</li>
@@ -238,7 +333,7 @@
 						
 						<div>
 							<h3>Nos hébergements</h3>
-							<ul class="footer--list">
+							<ul class="footer__list">
 								<li>Charte qualité</li>
 								<li>Soumettre votre hôtel</li>
 							</ul>
@@ -246,7 +341,7 @@
 						
 						<div>
 							<h3>Assistance</h3>
-							<ul class="footer--list">
+							<ul class="footer__list">
 								<li>Centre d'aide</li>
 								<li>Nous contacter</li>
 							</ul>
@@ -255,36 +350,6 @@
 					</div>
 					
 				</footer>
-				
-				
-				
-			<!-- ********************************************************
-										FILL AUTO CARDS
-			********************************************************* -->
-				<script>
-					addFilter("hosts-filters", "Économique", "money-bill-wave");
-					addFilter("hosts-filters", "Familial", "child");
-					addFilter("hosts-filters", "Romantique", "heart");
-					addFilter("hosts-filters", "Animaux Autorisés", "dog");
-					
-					addCard("id__city-populars","emile-guillemot-Bj_rcSC5XfE-unsplash.jpg","Hôtel Le soleil du matin","128", 5);
-					addCard("id__city-populars","aw-creative-VGs8z60yT2c-unsplash.jpg","Au coeur de l'eau Chambres d'hôtes", "71", 4);
-					addCard("id__city-populars","febrian-zakaria-sjvU0THccQA-unsplash.jpg","Hôtel Tout bleu et Blanc", "68", 4);
-					
-					addCard("id__city-hosts","marcus-loke-WQJvWU_HZFo-unsplash.jpg","Auberge la Cannebière","25", 4);
-					addCard("id__city-hosts","fred-kleber-gTbaxaVLvsg-unsplash.jpg","Hôtel du port", "52", 5);
-					addCard("id__city-hosts","reisetopia-B8WIgxA_PFU-unsplash.jpg","Hôtel Les mouettes", "76", 4);
-					addCard("id__city-hosts","annie-spratt-Eg1qcIitAuA-unsplash.jpg","Hôtel de la mer","46", 3);
-					addCard("id__city-hosts","nicate-lee-kT-ZyaiwBe0-unsplash.jpg","Auberge Le Panier", "23", 4);
-					addCard("id__city-hosts","febrian-zakaria-M6S1WvfW68A-unsplash.jpg","Hôtel chez Amina", "96", 5);
-					
-					addActivity("id__activities","reno-laithienne-QUgJhdY5Fyk-unsplash.jpg","Vieux Port","card5", "id__card_1");
-					addActivity("id__activities","paul-hermann-QFTrLdQIRhI-unsplash.jpg","Fort de Pomègues","card2", "id__card_2");
-					addActivity("id__activities","kevin-hikari-rV_Qd1l-VXg-unsplash.jpg","Îles du Frioul","card3", "id__card_3");
-					addActivity("id__activities","kilyan-sockalingum-NR8-cBCN3aI-unsplash.jpg","Parc National des Calanques","card5", "id__card_4");
-					addActivity("id__activities","florian-wehde-xW9e8gdotxI-unsplash.jpg","Notre-Dame-de-la-Garde","card3", "id__card_5");
-					addActivity("id__activities","lena-paulin-wH2-EJoDcV0-unsplash.jpg","Parc Longchamp","card2", "id__card_6");
-				</script>
 
 		</div>
 		
