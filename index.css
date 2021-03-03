@@ -23,26 +23,6 @@
 		
 		
 /* **************************************************************************** */
-/*									- FONTS -									*/
-/* **************************************************************************** */
-
-	/*  - for titles */
-		@font-face {
-				font-family			: 'Raleway Regular';
-				src					: url('fonts/static/Raleway-Regular.ttf') format('truetype');
-				font-weight			: normal;
-				font-style			: normal;
-			}
-		@font-face {
-				font-family			: 'Raleway Medium';
-				src					: url('fonts/static/Raleway-Medium.ttf') format('truetype');
-				font-weight			: normal;
-				font-style			: normal;
-			}
-			
-			
-			
-/* **************************************************************************** */
 /*									- BODY -									*/
 /* **************************************************************************** */
 	
@@ -68,7 +48,7 @@
 		.whole__page {
 			width					: 100%;
 			margin					: 0 auto;
-			font-family				: 'Raleway Medium', sans-serif;
+			font-family				: 'Raleway', sans-serif;
 			font-size				: 1em;
 		}
 		
@@ -98,9 +78,6 @@
 			padding-bottom			: 0.5em;
 		}
 		
-		.box {
-			
-		}
 		
 			
 /* **************************************************************************** */
@@ -119,7 +96,7 @@
 		    flex-direction			: row;
 		    
 		    /* set font for all items */
-			font-family				: 'Raleway Medium', sans-serif;
+			font-family				: 'Raleway', sans-serif;
 			font-weight				: bold;
 		}
 		
@@ -179,16 +156,18 @@
 /*									- MAIN -									*/
 /* **************************************************************************** */
 	
-	/* searchbar */
+	/* Settings */
+		
+		/* searchbar */
 		
 		/* vertical spaces between elements */
-		.search h1 {
+		.settings__heading {
 			padding-bottom			: 0.25em;
 		}
-		.search h1~p {
+		.settings__subtitle {
 			padding-bottom			: 1em;
 		}
-		.search .box {
+		.settings .box {
 			padding-bottom			: 1em;
 		}
 		
@@ -275,11 +254,12 @@
 		
 	/* filters */
 		
-		.filters h2 {
+		.settings__title {
 			padding-bottom			: 1em;
+			width : 100%;
 		}
 		
-		.filters .box {
+		.settings .box {
 			padding-bottom			: 1em;
 			
 			width					: 100%;
@@ -292,14 +272,14 @@
 		
 		.filter {
 			font-size				: 18px;
-			height					: 2.5em;
 			font-weight				: bold;
+			height					: 2.5em;
 			margin-bottom			: 0.8em;
+			margin-right			: 0.5em;
 			border-radius			: 1.5em;
 			border					: 2px solid lightgrey;
-			margin-right			: 0.5em;
 			
-			cursor:pointer;
+			cursor					: pointer;
 		}
 		
 		/* does not show the checkbox */
@@ -342,7 +322,7 @@
 		}
 		
 		
-		.filters__info {
+		.settings__info {
 			margin-bottom			: 1.5em;
 		}
 		.fa-info {
@@ -579,6 +559,9 @@
 			}
 			
 		/* filters */
+			.filter {
+				margin-right		: 1.5em;
+			}
 			
 			.searchbar__button {
 				width				: auto;
@@ -587,6 +570,15 @@
 			}
 			.searchbar__button__name {
 				display				: inline;
+			}
+			
+			.fa-search {
+				display				: none;
+			}
+			
+			.settings__title {
+				width				: auto;
+				margin-right		: 2em;
 			}
 			
 		/* populars/cities */

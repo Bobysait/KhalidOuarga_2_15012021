@@ -11,17 +11,17 @@
 		<title>Reservia</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-        <script src="https://kit.fontawesome.com/dc80972f73.js" crossorigin="anonymous"></script>
-        
+		<script src="https://kit.fontawesome.com/dc80972f73.js" crossorigin="anonymous"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="index.css" />
 		
 	</head>
 	
 	
-	<!-- The body block -->
 	<body class="theme--lighter">
 		
-		<!-- The whole page maxed-width to 1024px -->
+		<!-- The whole page is maxed-width to 1024px -->
 		<div class="whole__page">
 			
 			<!-- ********************************************************
@@ -56,32 +56,30 @@
 				
 				<main>
 					
-					<!-- SEARCH BOX -->
+					<!-- SETTINGS : SEARCH BOX/FILTERS -->
 						
-						<section class="search theme--lighter">
+						<section class="settings theme--lighter">
 							
-							<h1>Trouvez votre hébergement pour des vacances de rêve</h1>
-							<p>En plein centre ville ou en pleine nature</p>
+							<h1 class="settings__heading">Trouvez votre hébergement pour des vacances de rêve</h1>
+							<p class="settings__subtitle">En plein centre ville ou en pleine nature</p>
 							
 							<div class="box">
 								<div class="searchbar">
 									<form class="searchbar__form" action="#" method="POST">
 										<div class="searchbar__location"><i class="searchbar__icon fas fa-map-marker-alt"></i></div>
 										<input type="text" class="geolocalitation searchbar__text" name="search_host" placeholder="Marseille, France" />
-										<button class="searchbar__button"><i class="fas fa-search"></i><span class="searchbar__button__name"> Rechercher </span></button>
+										<button class="searchbar__button">
+											<i class="fas fa-search"></i>
+											<span class="searchbar__button__name"> Rechercher </span>
+										</button>
 									</form>
 								</div>
 							</div>
 							
-						</section>
-						
-					<!-- FILTERS -->
-						
-						<section class="filters theme--lighter">
-							
-							<h2>Filtres</h2>
-							
 							<div class="box">
+							
+								<h2 class="settings__title">Filtres</h2>
+								
 								<!-- label can contain one control element
 									so we use it to wrap a checkbox that won't actually be displayed
 								-->
@@ -109,7 +107,8 @@
 									<span class="filter__name">Animaux Autorisés</span>
 								</label>
 							</div>
-							<p class="filters__info"><i class="fas fa-info" title="disponibilité"></i> Plus de 500 logements sont disponibles dans cette ville.</p>
+							
+							<p class="settings__info"><i class="fas fa-info" title="disponibilité"></i> Plus de 500 logements sont disponibles dans cette ville.</p>
 							
 						</section>
 						
