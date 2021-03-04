@@ -362,6 +362,11 @@
 			justify-content			: space-between;
 		}
 		
+		.card__box a {
+			text-decoration			: none;
+			cursor					: pointer;
+		}
+		
 		.card {
 			display					: flex;
 			flex-direction			: row;
