@@ -492,8 +492,10 @@
 			height					: 134px;
 		}
 		.activities .card__title {
-			padding-left			: 0.5em;
-			padding-bottom			: 1.0em;
+			padding					: 0 1em 1em 1em;
+			text-overflow			: ellipsis;
+			overflow				: hidden;
+			white-space				: nowrap;
 		}
 		
 		.activities {
@@ -789,10 +791,6 @@
 			}
 			.card2 {
 				height				: 110px;
-			}
-			.activities .card__title {
-				padding-left		: 0.5em;
-				font-size			: 14px;
 			}
 			#id__card_5{ order:1; }
 			#id__card_6{ order:1; }
