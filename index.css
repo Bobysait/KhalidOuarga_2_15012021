@@ -21,7 +21,7 @@
 		}
 		
 		.theme--light {
-			background-color		: white;
+			background-color		: #f2f2f2;
 		}
 		
 		
@@ -32,7 +32,7 @@
 		}
 		
 		body {
-			color					: black!important;
+			color					: black;
 		}
 		a {
 			color					: inherit;
@@ -151,7 +151,7 @@
 	
 	/* Settings */
 		
-		/* searchbar */
+	/* searchbar */
 		
 		/* vertical spaces between elements */
 		.settings__heading {
@@ -242,7 +242,6 @@
 		}
 		
 		
-		
 	/* filters */
 		
 		.settings__title {
@@ -257,11 +256,15 @@
 			
 			display					: flex;
 			flex-wrap				: wrap;
+			align-items				: center;
 			justify-content			: flex-start;
 			flex-direction			: row;
 		}
 		
 		.filter {
+			display					: flex;
+			align-items				: center;
+						
 			font-size				: 18px;
 			font-weight				: bold;
 			height					: 2.5em;
@@ -277,7 +280,7 @@
 			border					: 2px solid #5cf;
 			background				: #5cf;
 		}
-		.filter:hover>.filter__icon {
+		.filter:hover>.filter__circle {
 			background-color		: #5cf;
 		}
 		
@@ -285,36 +288,33 @@
 		.filter__checkbox {
 			display					: none;
 		}
-		.filter__name {
-			font-size				: 18px;
-			height					: auto;
-			
-			padding-left			: 0.1em;
-			padding-right			: 0.8em;
-			
-			background-color		: transparent;
-			border					: none;
-			cursor					: pointer;
-			outline					: inherit;
-		}
 		
-		.filter__icon {
-			width					: 1.85em;
-			height					: 1.85em;
-			
-			/* offset the circle to overlap borders */
-			margin					: -2px 0 0 -3px;
-			border-radius			: 1.425em;
-			/* offset icons to adjust the center position */
-			padding-top				: 0.9em;
-			padding-left			: 0.9em;
-			
-			transition				: background-color 0.5s, color 0.5s;
+		.filter__circle {
+			position				: absolute;
+			width					: 49px;
+			height					: 49px;
+			border-radius			: 100%;
+			margin-top				: -1px;
+			margin-left				: -3px;
+			display					: flex;
+			align-items				: center;
+			justify-content			: center;
 			color					: #0065FC;
 			background-color		: #DEEBFF;
+			
+			transition				: background-color 0.5s, color 0.5s;
 		}
 		
-		.filter__checkbox:checked~.filter__icon {
+		.filter__name {
+			font-size				: 18px;
+			
+			padding-left			: 2.9em;
+			padding-right			: 0.7em;
+			
+			cursor					: pointer;
+		}
+		
+		.filter__checkbox:checked~.filter__circle {
 			background-color		: blue;
 			color					: white;
 		}
@@ -332,6 +332,7 @@
 			float					: left;
 			margin-right			: 1em;
 		}
+		
 		
 		
 		
