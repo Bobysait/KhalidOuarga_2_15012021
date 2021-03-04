@@ -17,13 +17,11 @@
 	/* theme */
 		
 		.theme--lighter {
-			background-color		: #FFFFFF;
-			color					: #000000;
+			background-color		: white;
 		}
 		
 		.theme--light {
-			background-color		: #F2F2F2;
-			color					: #000000;
+			background-color		: white;
 		}
 		
 		
@@ -31,6 +29,13 @@
 		
 		html {
 			scroll-behavior			: smooth;
+		}
+		
+		body {
+			color					: black!important;
+		}
+		a {
+			color					: inherit;
 		}
 		
 		.whole__page {
@@ -269,7 +274,7 @@
 			transition				: background-color 0.5s, border-color 0.5s;
 		}
 		.filter:hover {
-			border					: 2px solid #5df;
+			border					: 2px solid #5cf;
 			background				: #5cf;
 		}
 		.filter:hover>.filter__icon {
@@ -370,6 +375,7 @@
 			background-color		: #FFFFFF;
 			box-shadow				: 0 0 1.5em #e0e0e0;
 		}
+		
 		.card__image__box {
 			height					: auto;
 			flex					: 2;
