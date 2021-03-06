@@ -160,7 +160,7 @@
 		.settings__subtitle {
 			padding-bottom			: 1em;
 		}
-		.settings .box {
+		.settings__box {
 			padding-bottom			: 1em;
 		}
 		
@@ -249,9 +249,7 @@
 			width : 100%;
 		}
 		
-		.settings .box {
-			padding-bottom			: 1em;
-			
+		.settings__box {
 			width					: 100%;
 			
 			display					: flex;
@@ -280,8 +278,10 @@
 			border					: 2px solid #5cf;
 			background				: #5cf;
 		}
-		.filter:hover>.filter__circle {
+		.filter:hover>.filter__icon {
 			background-color		: #5cf;
+			transform				: scale(1.2);
+			box-shadow				: 0 0 15px rgba(80,200,255,1);
 		}
 		
 		/* does not show the checkbox */
@@ -289,7 +289,7 @@
 			display					: none;
 		}
 		
-		.filter__circle {
+		.filter__icon {
 			position				: absolute;
 			width					: 49px;
 			height					: 49px;
@@ -302,7 +302,9 @@
 			color					: #0065FC;
 			background-color		: #DEEBFF;
 			
-			transition				: background-color 0.5s, color 0.5s;
+			box-shadow				: 0 0 30px rgba(80,200,255,0);
+			
+			transition				: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
 		}
 		
 		.filter__name {
@@ -314,11 +316,10 @@
 			cursor					: pointer;
 		}
 		
-		.filter__checkbox:checked~.filter__circle {
+		.filter__checkbox:checked~.filter__icon {
 			background-color		: blue;
 			color					: white;
 		}
-		
 		
 		.settings__info {
 			margin-bottom			: 1.5em;
